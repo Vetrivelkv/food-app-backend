@@ -1,0 +1,12 @@
+{
+    "database": {
+        "user": "lbricagukcyoue",
+        "password": "e1183f54a9453e3abe7537a95ff6d82d28bf69504106012400df035efe5c9785",
+        "database": "d7jb633q6965fo",
+        "port": 5432,
+        "host": "ec2-18-214-35-70.compute-1.amazonaws.com",
+        "ssl": {
+            "rejectUnauthorized": false
+        }
+    }
+}
