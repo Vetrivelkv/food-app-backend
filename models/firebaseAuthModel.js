@@ -1,4 +1,5 @@
 "use strict";
+const { getAuth } = require("firebase-admin/auth");
 
 module.exports = FireBaseAuthModel;
 
@@ -12,20 +13,20 @@ function FireBaseAuthModel(options) {
 
 /**
  *  getAuth
- * @param token
+ * @param idtoken
  */
 FireBaseAuthModel.prototype.getAuth = async (idToken) => {
   try {
-    console.log("comes here");
-    await getAuth()
+    const results = await getAuth()
       .verifyIdToken(idToken)
-      .then((decodedToken) => {
-        const uid = decodedToken.uid;
-        console.log(uid);
+      .then((decodedToken) => {        
+        return decodedToken;
       })
       .catch((error) => {
-        console.log(error);
+        throw error;
       });
+
+    return results;
   } catch (ex) {
     throw ex;
   }
