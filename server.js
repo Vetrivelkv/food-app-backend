@@ -5,8 +5,10 @@ const appInfo = require("./rest/appInfo");
 const fireBaseRest = require("./rest/firebaseAuth");
 const morgan = require("morgan");
 const FireBaseInit = require("./lib/firebaseInit")({});
+const dbscripts = require("./init/dbScriptsRunner");
 
 FireBaseInit.InitializeApp();
+ dbscripts.run();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
