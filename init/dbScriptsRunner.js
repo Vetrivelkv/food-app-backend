@@ -2,10 +2,10 @@ const _scripts = require("./dbscripts");
 const db = require("./database");
 
 const createStateTable = `CREATE TABLE STATE(id UUID NOT NULL DEFAULT uuid_generate_v1() PRIMARY KEY, sequence SERIAL, scriptName VARCHAR ( 50 ) NOT NULL);`;
-const insertIntoState = `INSERT INTO STATE (scriptname) VALUES('state_table_creation');`;
+
 const checkTableExists = `SELECT to_regclass('public.state');`;
 
-const checkStateLastScript = `SELECT sequence FROM state ORDER BY sequence DESC LIMIT 1;`;
+const checkStateLastScript = `SELECT sequence,scriptname FROM state ORDER BY sequence DESC LIMIT 1;`;
 
 const _runScripts = async function () {
   const hasTable = await db.query(checkTableExists);
@@ -14,14 +14,25 @@ const _runScripts = async function () {
     //state table creation
     if (hasTable.rows[0].to_regclass === null) {
       await db.query(createStateTable);
+      const insertIntoState = `INSERT INTO STATE (scriptname) VALUES('state_table_creation');`;
       await db.query(insertIntoState);
     }
     //state table creation
-    else {
-      const checkLast = await db.query(checkStateLastScript);
-      
-      if (checkLast.rows[0].sequence > _scripts.length - 1) {
-        console.log("handle migration logic here");
+    const checkLast = await db.query(checkStateLastScript);
+    let executeScript = false;        
+
+    if (checkLast.rows[0].sequence > _scripts.length - 1) {
+      for (const script of _scripts) {
+        
+        if (checkLast.rows[0].scriptname == script.key) {          
+          executeScript = true;
+          continue;
+        } 
+        if(executeScript) {
+          await script.export.applyScript();
+          const insertIntoState = `INSERT INTO STATE (scriptname) VALUES('${script.key}');`;
+          await db.query(insertIntoState);          
+        }
       }
     }
   }
