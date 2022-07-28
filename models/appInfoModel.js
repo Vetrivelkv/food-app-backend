@@ -38,3 +38,18 @@ AppInfoModel.prototype.createAppInfo = async function (params) {
   console.log(result["rows"][0], "result log");
   return result["rows"][0];
 };
+
+AppInfoModel.prototype.updateAppInfo = async function (params) {
+  const result = await db.query("UPDATE appinfo SET appname=$1 WHERE id=$2", [
+    params.appname,
+    params.id,
+  ]);
+
+  return result;
+};
+
+AppInfoModel.prototype.getAppInfoById = async function (id) {
+  
+  const results = await db.query(`SELECT * FROM appinfo WHERE id='${id}'`);
+  return results.rows;
+};
