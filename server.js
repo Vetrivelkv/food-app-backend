@@ -1,21 +1,27 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const appInfo = require("./rest/appInfo");
 const fireBaseRest = require("./rest/firebaseAuth");
 const morgan = require("morgan");
 const FireBaseInit = require("./lib/firebaseInit")({});
 const dbscripts = require("./init/dbScriptsRunner");
+const appInfo = require("./rest/appInfo");
+const category = require("./rest/category");
+const menu = require("./rest/menu");
 
 FireBaseInit.InitializeApp();
- dbscripts.run();
+dbscripts.run();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 app.use(morgan("tiny"));
+
+// routes
 app.use("/appinfo", appInfo);
 app.use("/firebase", fireBaseRest);
+app.use("/category", category);
+app.use("/menu", menu);
+// routes
 
 app.use(function (req, res, next) {
   let err = new Error("Not Found");

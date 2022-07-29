@@ -34,8 +34,7 @@ AppInfoModel.prototype.createAppInfo = async function (params) {
       params.socialaccounts,
       date,
     ]
-  );
-  console.log(result["rows"][0], "result log");
+  );  
   return result["rows"][0];
 };
 
