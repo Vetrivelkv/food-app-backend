@@ -17,25 +17,24 @@ MenuModel.prototype.getMenu = async function () {
 };
 
 MenuModel.prototype.postMenu = async function (params) {
+  const reqKeys = { ...params, created_on: new Date() };
+  const tableColumns = Object.keys(reqKeys);
+  const columnValues = Object.values(reqKeys);
+  let rowCount = [];
+
+  for (var i = 1; i <= columnValues.length; i++) {
+    rowCount.push("$" + `${i}`);
+  }
   const result = await db.query(
-    `INSERT INTO menu (name,description,value,image,cartcount,parentid,parentactive,maxcount,actualprice,offerprice,isoffer,created_on) 
-    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
-    [
-      params.name,
-      params.description,
-      params.value,
-      params.image,
-      params.cartcount,
-      params.parentid,
-      params.parentactive,
-      params.maxcount,
-      params.actualprice,
-      params.offerprice,
-      params.isoffer,
-      new Date(),
-    ]
+    `with new_menu_item as (
+    insert into menu (${tableColumns}) VALUES (${[...rowCount]}) RETURNING *
+  )
+  update category set count =1
+  where categoryid= (select parentid from new_menu_item);`,
+    [...columnValues]
   );
-  return result["rows"][0];
+
+  return result;
 };
 
 MenuModel.prototype.updateMenu = async function (params) {
