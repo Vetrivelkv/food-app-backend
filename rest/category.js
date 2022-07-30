@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const CategoryModel = require("../models/categoryModel")({});
+const jwtSignIn = require("../lib/generateJwtToken");
 
 router.get("/", async function (req, res, next) {
   try {
     const results = await CategoryModel.getCategory();
+    // jwtSignIn.generateToken(results[0].categoryid);
     return res.json(results);
   } catch (err) {
     return next(err);

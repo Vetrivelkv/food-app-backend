@@ -8,6 +8,7 @@ const dbscripts = require("./init/dbScriptsRunner");
 const appInfo = require("./rest/appInfo");
 const category = require("./rest/category");
 const menu = require("./rest/menu");
+const Auth = require("./lib/Auth");
 
 FireBaseInit.InitializeApp();
 dbscripts.run();
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use(morgan("tiny"));
 
 // routes
+// app.use("/appinfo",Auth.verifyToken, appInfo);
 app.use("/appinfo", appInfo);
 app.use("/firebase", fireBaseRest);
 app.use("/category", category);
