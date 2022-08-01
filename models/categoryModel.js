@@ -17,11 +17,20 @@ CategoryModel.prototype.getCategory = async function () {
 };
 
 CategoryModel.prototype.postCategory = async function (params) {
+  const reqKeys = { ...params, created_on: new Date() };
+  const tableColumns = Object.keys(reqKeys);
+  const columnValues = Object.values(reqKeys);
+  let rowCount = [];
+  for (var i = 1; i <= columnValues.length; i++) {
+    rowCount.push("$" + `${i}`);
+  }
   const result = await db.query(
-    "INSERT INTO category (name,value,image,count,created_on) VALUES ($1,$2,$3,$4,$5) RETURNING *",
-    [params.name, params.value, params.image, params.count, new Date()]
+    `INSERT INTO category (${tableColumns}) VALUES (${[
+      ...rowCount,
+    ]}) RETURNING *`,
+    [...columnValues]
   );
-  return result["rows"][0];
+  return result.rows[0];
 };
 
 CategoryModel.prototype.updateCategory = async function (params) {
