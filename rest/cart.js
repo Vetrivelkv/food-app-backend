@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const MenuModel = require("../models/menuModel")({});
+const CartModel = require("../models/cartModel")({});
 
 router.get("/", async function (req, res, next) {
   try {
-    const results = await MenuModel.getMenu();
+    const results = await CartModel.get();
     return res.json(results);
   } catch (err) {
     return next(err);
@@ -13,19 +13,8 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   try {
-    const results = await MenuModel.postMenu(req.body);
+    const results = await CartModel.post(req.body);
     return res.json(results);
-  } catch (err) {
-    let errorMessage = new Error(err);
-    errorMessage.status = 404;
-    return next(errorMessage);
-  }
-});
-
-router.put("/", async function (req, res, next) {
-  try {
-    await MenuModel.updateMenu(req.body);
-    return res.json({ success: true });
   } catch (err) {
     return next(err);
   }
@@ -33,7 +22,7 @@ router.put("/", async function (req, res, next) {
 
 router.get("/:id", async function (req, res, next) {
   try {
-    const result = await MenuModel.getMenuById(req.params.id);
+    const result = await CartModel.getById(req.params.id);
     return res.json(result);
   } catch (err) {
     return next(err);
@@ -42,7 +31,7 @@ router.get("/:id", async function (req, res, next) {
 
 router.delete("/:id", async function (req, res, next) {
   try {
-    await MenuModel.deleteMenu(req.params.id);
+    await CartModel.delete(req.params.id);
     return res.json({ success: true });
   } catch (err) {
     return next(err);

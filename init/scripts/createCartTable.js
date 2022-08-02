@@ -8,15 +8,17 @@ const createCartTable = `CREATE TABLE cart (
   image VARCHAR ( 50 ),
   cartcount INTEGER,
   isactive  BOOLEAN DEFAULT TRUE,  
-  parentid UUID,
-  parentactive BOOLEAN, 
+  categoryid UUID,
+  categoryactive BOOLEAN, 
   maxcount INTEGER,
   actualprice DOUBLE PRECISION,
   offerprice DOUBLE PRECISION,
   isoffer BOOLEAN,
   created_on TIMESTAMP,
-  userid UUID,    
-  PRIMARY KEY(id)    
+  userid UUID,
+  menuid UUID,    
+  PRIMARY KEY(id),
+  FOREIGN KEY (menuid) REFERENCES menu(menuid)       
 );`;
 
 module.exports.applyScript = async function () {

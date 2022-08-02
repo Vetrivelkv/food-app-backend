@@ -8,6 +8,7 @@ const dbscripts = require("./init/dbScriptsRunner");
 const appInfo = require("./rest/appInfo");
 const category = require("./rest/category");
 const menu = require("./rest/menu");
+const cart = require("./rest/cart");
 const Auth = require("./lib/Auth");
 
 FireBaseInit.InitializeApp();
@@ -23,6 +24,7 @@ app.use("/appinfo", appInfo);
 app.use("/firebase", fireBaseRest);
 app.use("/category", category);
 app.use("/menu", menu);
+app.use("/cart", cart);
 // routes
 
 app.use(function (req, res, next) {

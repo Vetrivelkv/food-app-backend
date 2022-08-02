@@ -17,24 +17,32 @@ MenuModel.prototype.getMenu = async function () {
 };
 
 MenuModel.prototype.postMenu = async function (params) {
-  const reqKeys = { ...params, created_on: new Date() };
-  const tableColumns = Object.keys(reqKeys);
-  const columnValues = Object.values(reqKeys);
-  let rowCount = [];
+  try {
+    const reqKeys = { ...params, created_on: new Date() };
+    const tableColumns = Object.keys(reqKeys);
+    const columnValues = Object.values(reqKeys);
+    let rowCount = [];
 
-  for (var i = 1; i <= columnValues.length; i++) {
-    rowCount.push("$" + `${i}`);
+    for (var i = 1; i <= columnValues.length; i++) {
+      rowCount.push("$" + `${i}`);
+    }
+    const result = await db.query(
+      `with new_menu_item as (
+      insert into menu (${tableColumns}) VALUES (${[...rowCount]}) RETURNING *
+    )
+    update category set count =count+1
+    where categoryid= (select parentid from new_menu_item);`,
+      [...columnValues]
+    );
+
+    return result;
+  } catch (err) {
+    if (err.constraint === "menu_parentid_fkey") {
+      return "Category does not exist";
+    } else {
+    }
+    return err;
   }
-  const result = await db.query(
-    `with new_menu_item as (
-    insert into menu (${tableColumns}) VALUES (${[...rowCount]}) RETURNING *
-  )
-  update category set count =1
-  where categoryid= (select parentid from new_menu_item);`,
-    [...columnValues]
-  );
-
-  return result;
 };
 
 MenuModel.prototype.updateMenu = async function (params) {
