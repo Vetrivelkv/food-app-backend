@@ -3,6 +3,7 @@ const create_appInfo_table = require("./scripts/createAppinfo");
 const create_category_table = require("./scripts/createCategoryTable");
 const create_menu_table = require("./scripts/createMenuTable");
 const createCartTable = require("./scripts/createCartTable");
+const createUserTable = require("./scripts/createUserTable");
 
 module.exports = [
   {
@@ -24,5 +25,9 @@ module.exports = [
   {
     key: "create_cart_table",
     export: createCartTable,
+  },
+  {
+    key: "create_user_table",
+    export: createUserTable,
   },
 ];

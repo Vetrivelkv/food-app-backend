@@ -1,0 +1,649 @@
+{
+	"info": {
+		"_postman_id": "97234149-8c53-47ba-908a-89df0b800ba1",
+		"name": "Food_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10227433"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Post category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Break Fast\",\r\n    \"value\": \"breakFast\",\r\n    \"count\": 0,\r\n    \"image\": \"dummy\",\r\n    \"isactive\":\"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/category/19114816-0eed-11ed-ae0f-0eae77ab5617",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"category",
+								"19114816-0eed-11ed-ae0f-0eae77ab5617"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/category/19114816-0eed-11ed-ae0f-0eae77ab5617",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"category",
+								"19114816-0eed-11ed-ae0f-0eae77ab5617"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AppInfo",
+			"item": [
+				{
+					"name": "http://localhost:3001/appinfo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"appname\":\"Sample App 4\",\r\n    \"applogo\":\"www.google.com\",    \r\n    \"googleapikey\":\"*********\",\r\n    \"razorpaykey\":\"******\",\r\n    \"hotelname\":\"Chennai\",\r\n    \"hoteladdress\":\"Chennai\",\r\n    \"latlong\":\"-81.4,30.3\",\r\n    \"email\":\"vetrivelkvk@gmail.com\",\r\n    \"phoneno\":\"8248505683\",\r\n    \"socialaccounts\":\"[{facebook:fb,twitter:twitter}]\",\r\n    \"createdon\":\"24-07-2022\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/appinfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"appinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3001/appinfo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"642b6924-0e86-11ed-afb2-0eae77ab5617\",\r\n    \"appname\": \"Update App 4\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/appinfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"appinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3001/appinfo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZjcxMjBhNC0wZWViLTExZWQtYmFmZC0wZWFlNzdhYjU2MTciLCJpYXQiOjE2NTkxNTM0NjEsImV4cCI6MTY1OTc1ODI2MX0.V7LHgb8p-CZIHFxOoE8rijo65fI7K-_ebbYsOhKn0JM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZjcxMjBhNC0wZWViLTExZWQtYmFmZC0wZWFlNzdhYjU2MTciLCJpYXQiOjE2NTkxNTM0NjEsImV4cCI6MTY1OTc1ODI2MX0.V7LHgb8p-CZIHFxOoE8rijo65fI7K-_ebbYsOhKn0JM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"idtoken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImJmMWMyNzQzYTJhZmY3YmZmZDBmODRhODY0ZTljMjc4ZjMxYmM2NTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vaWR0b2tlbi01YWE3MSIsImF1ZCI6ImlkdG9rZW4tNWFhNzEiLCJhdXRoX3RpbWUiOjE2NTg4Mjc4MzUsInVzZXJfaWQiOiJDcXU0R0ZnWFc1V0RIdnFuVUoyWDhuWVRkTWsxIiwic3ViIjoiQ3F1NEdGZ1hXNVdESHZxblVKMlg4bllUZE1rMSIsImlhdCI6MTY1ODgyNzgzNSwiZXhwIjoxNjU4ODMxNDM1LCJlbWFpbCI6InZldHJpOTdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbInZldHJpOTdAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.WvOF7O6P7ihLv84mDN8WkaSfYLYeCeq0jmvS262dUGlKdeoRQ7jo29SOG2i8BvmdajtKNDcoYb0U2L9Hl3c1y38zLICnIfRPndP3fDf7W5dYRnSIGhsd4TjjNj2G6D8md2mqlGI16pSsHRWlRJbdQ8WqCn2LTUreQfgEqAyqYhcAXFrmomM9OnkIrqbomEQvwmQ4mKoBoHiaBmyvL149ncid2cmlDswRWKoRDRV-yIWJygIfCwgjsmee9y0GUjK-uwub5gLKDbIWBAXPndiBQWl1kiECURF-bOCyMba1IcvlnJuBwBpqlwfGuRyu72vx4_gSugWKQLdsIpXp5tBRDw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/appinfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"appinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3001/appinfo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"642b6924-0e86-11ed-afb2-0eae77ab5617\",\r\n    \"appname\": \"Update App 4\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/appinfo/642b6924-0e86-11ed-afb2-0eae77ab5617",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"appinfo",
+								"642b6924-0e86-11ed-afb2-0eae77ab5617"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "getMenu",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Menu",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\":\"Puri\",\r\n   \"description\":\"2 puri\",\r\n   \"value\":\"2puri\",\r\n   \"image\":\"dummy\",\r\n   \"cartcount\":0,\r\n   \"parentid\":\"de1ceda6-12c9-11ed-830e-0eae77ab5617\",\r\n   \"parentactive\":true,\r\n   \"maxcount\":50,\r\n   \"actualprice\":10.0,\r\n   \"offerprice\":5.0,\r\n   \"isoffer\":false,\r\n   \"isactive\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put menu",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"menuid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"menuid\": \"1d77a25c-0ef1-11ed-996f-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/menu/1d77a25c-0ef1-11ed-996f-0eae77ab5617",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"menu",
+								"1d77a25c-0ef1-11ed-996f-0eae77ab5617"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "getCart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"menuid\":\"2419252c-12ca-11ed-830e-0eae77ab5617\",\r\n    \"name\": \"2 puri\",\r\n    \"description\":\"2 puri\",\r\n    \"value\":\"2 puri\",\r\n     \"image\":\"idly\",\r\n     \"cartcount\":\"1\",\r\n     \"isactive\":\"true\",\r\n     \"categoryid\":\"de1ceda6-12c9-11ed-830e-0eae77ab5617\",\r\n      \"categoryactive\":\"true\",\r\n     \"maxcount\":\"50\",\r\n     \"actualprice\":\"20\",\r\n     \"offerprice\":\"10\",\r\n     \"isoffer\":\"false\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCartByUserid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/cart/ef7120a4-0eeb-11ed-bafd-0eae77ab5617",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"cart",
+								"ef7120a4-0eeb-11ed-bafd-0eae77ab5617"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Vetrivel\",\r\n    \"lastname\":\"K\",\r\n    \"phone\":\"8248505683\",\r\n    \"email\":\"vetrivelkvk@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user/c51d75fc-12db-11ed-8644-0eae77ab561",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"c51d75fc-12db-11ed-8644-0eae77ab561"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryid\": \"ef7120a4-0eeb-11ed-bafd-0eae77ab5617\",\r\n    \"name\": \"Sample App update\",\r\n    \"image\": \"www.google.com\",\r\n    \"value\": \"food 1\",\r\n    \"count\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user/c51d75fc-12db-11ed-8644-0eae77ab5617",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user",
+								"c51d75fc-12db-11ed-8644-0eae77ab5617"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "http://localhost:3001/firebase/getauth",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"idtoken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImJmMWMyNzQzYTJhZmY3YmZmZDBmODRhODY0ZTljMjc4ZjMxYmM2NTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vaWR0b2tlbi01YWE3MSIsImF1ZCI6ImlkdG9rZW4tNWFhNzEiLCJhdXRoX3RpbWUiOjE2NTg4Mjc4MzUsInVzZXJfaWQiOiJDcXU0R0ZnWFc1V0RIdnFuVUoyWDhuWVRkTWsxIiwic3ViIjoiQ3F1NEdGZ1hXNVdESHZxblVKMlg4bllUZE1rMSIsImlhdCI6MTY1ODgyNzgzNSwiZXhwIjoxNjU4ODMxNDM1LCJlbWFpbCI6InZldHJpOTdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbInZldHJpOTdAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.WvOF7O6P7ihLv84mDN8WkaSfYLYeCeq0jmvS262dUGlKdeoRQ7jo29SOG2i8BvmdajtKNDcoYb0U2L9Hl3c1y38zLICnIfRPndP3fDf7W5dYRnSIGhsd4TjjNj2G6D8md2mqlGI16pSsHRWlRJbdQ8WqCn2LTUreQfgEqAyqYhcAXFrmomM9OnkIrqbomEQvwmQ4mKoBoHiaBmyvL149ncid2cmlDswRWKoRDRV-yIWJygIfCwgjsmee9y0GUjK-uwub5gLKDbIWBAXPndiBQWl1kiECURF-bOCyMba1IcvlnJuBwBpqlwfGuRyu72vx4_gSugWKQLdsIpXp5tBRDw\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/firebase/getauth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"firebase",
+						"getauth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

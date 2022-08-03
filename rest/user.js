@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const CartModel = require("../models/cartModel")({});
+const UserModel = require("../models/userModel")({});
 
 router.get("/:userid", async function (req, res, next) {
   try {
-    const results = await CartModel.getbyUserId(req.params.userid);
+    const results = await UserModel.getbyId(req.params.userid);
     return res.json(results);
   } catch (err) {
     return next(err);
@@ -13,7 +13,7 @@ router.get("/:userid", async function (req, res, next) {
 
 router.get("/", async function (req, res, next) {
   try {
-    const results = await CartModel.get();
+    const results = await UserModel.get();
     return res.json(results);
   } catch (err) {
     return next(err);
@@ -22,17 +22,8 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   try {
-    const results = await CartModel.post(req.body);
+    const results = await UserModel.post(req.body);
     return res.json(results);
-  } catch (err) {
-    return next(err);
-  }
-});
-
-router.get("/:id", async function (req, res, next) {
-  try {
-    const result = await CartModel.getById(req.params.id);
-    return res.json(result);
   } catch (err) {
     return next(err);
   }
@@ -40,7 +31,7 @@ router.get("/:id", async function (req, res, next) {
 
 router.delete("/:id", async function (req, res, next) {
   try {
-    await CartModel.delete(req.params.id);
+    await UserModel.delete(req.params.id);
     return res.json({ success: true });
   } catch (err) {
     return next(err);

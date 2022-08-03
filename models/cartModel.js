@@ -16,6 +16,12 @@ CartModel.prototype.get = async function () {
   return results.rows;
 };
 
+CartModel.prototype.getbyUserId = async function (userid) {
+  console.log(userid);
+  const results = await db.query(`SELECT * FROM cart where userid='${userid}'`);
+  return results.rows;
+};
+
 CartModel.prototype.post = async function (params) {
   try {
     const checkCategory = await db.query(
@@ -27,22 +33,64 @@ CartModel.prototype.post = async function (params) {
       );
 
       if (isMenuActive.rows[0].exists) {
-        const reqKeys = { ...params, created_on: new Date() };
-        const tableColumns = Object.keys(reqKeys);
-        const columnValues = Object.values(reqKeys);
-        let rowCount = [];
-        for (var i = 1; i <= columnValues.length; i++) {
-          rowCount.push("$" + `${i}`);
+        const cart = await db
+          .query(
+            `select maxcount,cartcount from cart  where menuid='${params.menuid}';`
+          )
+          .then((result) => {
+            return result.rows[0];
+          });
+        const isFoodInCart = await db
+          .query(
+            `select exists(select 1 from cart where menuid='${params.menuid}')`
+          )
+          .then((result) => {
+            return result.rows[0].exists;
+          });
+
+        const menuMaxCount = await db
+          .query(`select maxcount  from menu  where menuid='${params.menuid}';`)
+          .then((result) => {
+            return parseInt(result.rows[0].maxcount);
+          });
+
+        if (!isFoodInCart && menuMaxCount > parseInt(params.cartcount)) {
+          const reqKeys = { ...params, created_on: new Date() };
+          const tableColumns = Object.keys(reqKeys);
+          const columnValues = Object.values(reqKeys);
+          let rowCount = [];
+          for (var i = 1; i <= columnValues.length; i++) {
+            rowCount.push("$" + `${i}`);
+          }
+          const result = await db.query(
+            `INSERT INTO cart (${tableColumns}) VALUES (${[
+              ...rowCount,
+            ]}) RETURNING *`,
+            [...columnValues]
+          );
+          return result.rows[0];
+        } else if (isFoodInCart) {
+          if (
+            parseInt(params.cartcount) <= parseInt(cart.maxcount) &&
+            parseInt(params.cartcount) + parseInt(cart.cartcount) <=
+              parseInt(cart.maxcount)
+          ) {
+            const updateCart = await db.query(
+              `update cart set cartcount=cartcount+${params.cartcount} where menuid='${params.menuid}'`
+            );
+            return updateCart;
+          } else {
+            return {
+              message: "Food item limit reached, Please come back tomorrow",
+            };
+          }
+        } else {
+          return {
+            message: "Food item limit reached, Please come back tomorrow",
+          };
         }
-        const result = await db.query(
-          `INSERT INTO cart (${tableColumns}) VALUES (${[
-            ...rowCount,
-          ]}) RETURNING *`,
-          [...columnValues]
-        );
-        return result.rows[0];
       } else {
-        return "Menu is inactive";
+        return "Food Item is inactive";
       }
     } else {
       return "Category does not exist or it is inactive";
